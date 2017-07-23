@@ -1,0 +1,62 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myActionLabel">Create or edit a Action</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.action.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.action.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_condition">Condition</label>
+            <select class="form-control" name="condition" ng-model="vm.action.condition" id="field_condition">
+                <option value="START">START</option>
+                <option value="STOP">STOP</option>
+                <option value="ACTIVE">ACTIVE</option>
+                <option value="PASSIVE">PASSIVE</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_actionStatus">Action Status</label>
+            <select class="form-control" name="actionStatus" ng-model="vm.action.actionStatus" id="field_actionStatus">
+                <option value="START">START</option>
+                <option value="STOP">STOP</option>
+                <option value="ACTIVE">ACTIVE</option>
+                <option value="PASSIVE">PASSIVE</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="field_conditionUnit">Condition Unit</label>
+            <select class="form-control" id="field_conditionUnit" name="conditionUnit" ng-model="vm.action.conditionUnitId" ng-options="endNodeUnit.id as endNodeUnit.id for endNodeUnit in vm.conditionunits | orderBy:'id'">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_actionUnit">Action Unit</label>
+            <select class="form-control" id="field_actionUnit" name="actionUnit" ng-model="vm.action.actionUnitId" ng-options="endNodeUnit.id as endNodeUnit.id for endNodeUnit in vm.actionunits | orderBy:'id'">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_mode">Mode</label>
+            <select class="form-control" id="field_mode" name="mode" ng-model="vm.action.modeId" ng-options="mode.id as mode.id for mode in vm.modes"            >
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

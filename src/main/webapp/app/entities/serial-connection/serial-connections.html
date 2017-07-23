@@ -1,0 +1,66 @@
+<div>
+    <h2>Serial Connections</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="serial-connection.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span >
+                        Create new Serial Connection
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th><span>ID</span></th>
+                    <th><span>Port</span></th>
+                    <th><span>Baud Rate</span></th>
+                    <th><span>Data Bits</span></th>
+                    <th><span>Parity</span></th>
+                    <th><span>Stop Bits</span></th>
+                    <th><span>Flow Control</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="serialConnection in vm.serialConnections track by serialConnection.id">
+                    <td><a ui-sref="serial-connection-detail({id:serialConnection.id})">{{serialConnection.id}}</a></td>
+                    <td>{{serialConnection.port}}</td>
+                    <td>{{serialConnection.baudRate}}</td>
+                    <td>{{serialConnection.dataBits}}</td>
+                    <td>{{serialConnection.parity}}</td>
+                    <td>{{serialConnection.stopBits}}</td>
+                    <td>{{serialConnection.flowControl}}</td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="serial-connection-detail({id:serialConnection.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="serial-connection.edit({id:serialConnection.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="serial-connection.delete({id:serialConnection.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

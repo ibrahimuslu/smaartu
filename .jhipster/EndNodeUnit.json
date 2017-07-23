@@ -1,0 +1,46 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "endNode",
+            "otherEntityName": "endNode",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "condition",
+            "otherEntityName": "action",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "conditionUnit"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "action",
+            "otherEntityName": "action",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "actionUnit"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "type",
+            "fieldType": "UnitType",
+            "fieldValues": "SENSOR,CONTROL"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "UnitStatus",
+            "fieldValues": "START,STOP,ACTIVE,PASSIVE"
+        }
+    ],
+    "changelogDate": "20170723230254",
+    "entityTableName": "end_node_unit",
+    "dto": "mapstruct",
+    "pagination": "infinite-scroll",
+    "service": "serviceImpl"
+}

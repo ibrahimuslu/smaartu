@@ -40,6 +40,19 @@ public class CacheConfiguration {
             cm.createCache(com.eeu.smaartu.domain.User.class.getName(), jcacheConfiguration);
             cm.createCache(com.eeu.smaartu.domain.Authority.class.getName(), jcacheConfiguration);
             cm.createCache(com.eeu.smaartu.domain.User.class.getName() + ".authorities", jcacheConfiguration);
+            cm.createCache(com.eeu.smaartu.domain.ControlSystem.class.getName(), jcacheConfiguration);
+            cm.createCache(com.eeu.smaartu.domain.ControlSystem.class.getName() + ".nodes", jcacheConfiguration);
+            cm.createCache(com.eeu.smaartu.domain.EndNode.class.getName(), jcacheConfiguration);
+            cm.createCache(com.eeu.smaartu.domain.EndNode.class.getName() + ".endNodeUnits", jcacheConfiguration);
+            cm.createCache(com.eeu.smaartu.domain.SerialConnection.class.getName(), jcacheConfiguration);
+            cm.createCache(com.eeu.smaartu.domain.Action.class.getName(), jcacheConfiguration);
+            cm.createCache(com.eeu.smaartu.domain.Mode.class.getName(), jcacheConfiguration);
+            cm.createCache(com.eeu.smaartu.domain.Mode.class.getName() + ".actions", jcacheConfiguration);
+            cm.createCache(com.eeu.smaartu.domain.EndNodeUnit.class.getName(), jcacheConfiguration);
+            cm.createCache(com.eeu.smaartu.domain.InLocation.class.getName(), jcacheConfiguration);
+            cm.createCache(com.eeu.smaartu.domain.Region.class.getName(), jcacheConfiguration);
+            cm.createCache(com.eeu.smaartu.domain.Country.class.getName(), jcacheConfiguration);
+            cm.createCache(com.eeu.smaartu.domain.Location.class.getName(), jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

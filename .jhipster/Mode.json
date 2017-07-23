@@ -1,0 +1,27 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "action",
+            "otherEntityName": "action",
+            "otherEntityRelationshipName": "mode"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "UnitStatus",
+            "fieldValues": "START,STOP,ACTIVE,PASSIVE"
+        }
+    ],
+    "changelogDate": "20170723230253",
+    "entityTableName": "mode",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl"
+}
