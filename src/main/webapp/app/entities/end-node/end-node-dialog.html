@@ -1,0 +1,63 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myEndNodeLabel">Create or edit a End Node</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.endNode.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.endNode.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                    ng-model="vm.endNode.name"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_address">Address</label>
+            <input type="text" class="form-control" name="address" id="field_address"
+                    ng-model="vm.endNode.address"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_type">Type</label>
+            <select class="form-control" name="type" ng-model="vm.endNode.type" id="field_type">
+                <option value="GATEWAY">GATEWAY</option>
+                <option value="REMOTE">REMOTE</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="field_controlSystem">Control System</label>
+            <select class="form-control" id="field_controlSystem" name="controlSystem" ng-model="vm.endNode.controlSystemId" ng-options="controlSystem.id as controlSystem.id for controlSystem in vm.controlsystems"            >
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_inLocation">In Location</label>
+            <select class="form-control" id="field_inLocation" name="inLocation" ng-model="vm.endNode.inLocationId" ng-options="inLocation.id as inLocation.id for inLocation in vm.inlocations | orderBy:'id'">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_serialConnection">Serial Connection</label>
+            <select class="form-control" id="field_serialConnection" name="serialConnection" ng-model="vm.endNode.serialConnectionId" ng-options="serialConnection.id as serialConnection.port for serialConnection in vm.serialconnections | orderBy:'id'">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

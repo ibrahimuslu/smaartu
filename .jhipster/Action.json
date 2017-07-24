@@ -1,0 +1,44 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "conditionUnit",
+            "otherEntityName": "endNodeUnit",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "condition"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "actionUnit",
+            "otherEntityName": "endNodeUnit",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "action"
+        },
+        {
+            "relationshipName": "mode",
+            "otherEntityName": "mode",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "condition",
+            "fieldType": "UnitStatus",
+            "fieldValues": "START,STOP,ACTIVE,PASSIVE"
+        },
+        {
+            "fieldName": "actionStatus",
+            "fieldType": "UnitStatus",
+            "fieldValues": "START,STOP,ACTIVE,PASSIVE"
+        }
+    ],
+    "changelogDate": "20170723230252",
+    "entityTableName": "action",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl"
+}

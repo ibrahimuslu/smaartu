@@ -1,0 +1,53 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "controlSystem",
+            "otherEntityName": "controlSystem",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "inLocation",
+            "otherEntityName": "inLocation",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "endNode"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "serialConnection",
+            "otherEntityName": "serialConnection",
+            "otherEntityField": "port",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "endNode"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "endNodeUnit",
+            "otherEntityName": "endNodeUnit",
+            "otherEntityRelationshipName": "endNode"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "address",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "type",
+            "fieldType": "EndNodeType",
+            "fieldValues": "GATEWAY,REMOTE"
+        }
+    ],
+    "changelogDate": "20170723230250",
+    "entityTableName": "end_node",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl"
+}

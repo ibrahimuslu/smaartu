@@ -1,0 +1,47 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "endNode",
+            "otherEntityName": "endNode",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "serialConnection"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "port",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "baudRate",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "dataBits",
+            "fieldType": "DataBits",
+            "fieldValues": "B7,B8"
+        },
+        {
+            "fieldName": "parity",
+            "fieldType": "Parity",
+            "fieldValues": "NONE,EVEN,MARK,ODD,SPACE"
+        },
+        {
+            "fieldName": "stopBits",
+            "fieldType": "StopBits",
+            "fieldValues": "B1,B2"
+        },
+        {
+            "fieldName": "flowControl",
+            "fieldType": "FlowControl",
+            "fieldValues": "NONE,HARDWARE,XON_XOFF"
+        }
+    ],
+    "changelogDate": "20170723230251",
+    "entityTableName": "serial_connection",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl"
+}

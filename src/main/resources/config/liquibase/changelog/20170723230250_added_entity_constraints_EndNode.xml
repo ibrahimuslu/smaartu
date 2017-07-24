@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity EndNode.
+    -->
+    <changeSet id="20170723230250-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="control_system_id"
+                                 baseTableName="end_node"
+                                 constraintName="fk_end_node_control_system_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="control_system"/>
+
+        <addForeignKeyConstraint baseColumnNames="in_location_id"
+                                 baseTableName="end_node"
+                                 constraintName="fk_end_node_in_location_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="in_location"/>
+
+        <addForeignKeyConstraint baseColumnNames="serial_connection_id"
+                                 baseTableName="end_node"
+                                 constraintName="fk_end_node_serial_connection_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="serial_connection"/>
+
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,72 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="mySerialConnectionLabel">Create or edit a Serial Connection</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.serialConnection.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.serialConnection.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_port">Port</label>
+            <select type="text" class="form-control" name="port" id="field_port"
+                    ng-model="vm.serialConnection.port"
+            >
+                <option ng-repeat="port in vm.ports | filter:'tty' " value="{{port}}">{{port}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_baudRate">Baud Rate</label>
+            <input type="number" class="form-control" name="baudRate" id="field_baudRate"
+                    ng-model="vm.serialConnection.baudRate"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_dataBits">Data Bits</label>
+            <select class="form-control" name="dataBits" ng-model="vm.serialConnection.dataBits" id="field_dataBits">
+                <option value="B7">B7</option>
+                <option value="B8">B8</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_parity">Parity</label>
+            <select class="form-control" name="parity" ng-model="vm.serialConnection.parity" id="field_parity">
+                <option value="NONE">NONE</option>
+                <option value="EVEN">EVEN</option>
+                <option value="MARK">MARK</option>
+                <option value="ODD">ODD</option>
+                <option value="SPACE">SPACE</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_stopBits">Stop Bits</label>
+            <select class="form-control" name="stopBits" ng-model="vm.serialConnection.stopBits" id="field_stopBits">
+                <option value="B1">B1</option>
+                <option value="B2">B2</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_flowControl">Flow Control</label>
+            <select class="form-control" name="flowControl" ng-model="vm.serialConnection.flowControl" id="field_flowControl">
+                <option value="NONE">NONE</option>
+                <option value="HARDWARE">HARDWARE</option>
+                <option value="XON_XOFF">XON_XOFF</option>
+            </select>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>
