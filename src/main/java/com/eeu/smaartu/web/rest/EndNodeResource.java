@@ -1,7 +1,15 @@
 package com.eeu.smaartu.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.digi.xbee.api.XBeeDevice;
+import com.digi.xbee.api.exceptions.XBeeException;
+import com.eeu.smaartu.domain.SerialConnection;
+import com.eeu.smaartu.domain.enumeration.EndNodeType;
 import com.eeu.smaartu.service.EndNodeService;
+import com.eeu.smaartu.service.MyDataReceiveListener;
+import com.eeu.smaartu.service.SerialConnectionService;
+import com.eeu.smaartu.service.dto.SerialConnectionDTO;
+import com.eeu.smaartu.service.impl.SerialConnectionServiceImpl;
 import com.eeu.smaartu.web.rest.util.HeaderUtil;
 import com.eeu.smaartu.web.rest.util.PaginationUtil;
 import com.eeu.smaartu.service.dto.EndNodeDTO;
@@ -9,6 +17,7 @@ import io.swagger.annotations.ApiParam;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
@@ -35,8 +44,12 @@ public class EndNodeResource {
 
     private final EndNodeService endNodeService;
 
-    public EndNodeResource(EndNodeService endNodeService) {
+    @Autowired
+    private final SerialConnectionService serialConnectionService;
+
+    public EndNodeResource(EndNodeService endNodeService,SerialConnectionService serialConnectionService) {
         this.endNodeService = endNodeService;
+        this.serialConnectionService = serialConnectionService;
     }
 
     /**
@@ -54,6 +67,17 @@ public class EndNodeResource {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "idexists", "A new endNode cannot already have an ID")).body(null);
         }
         EndNodeDTO result = endNodeService.save(endNodeDTO);
+        if(endNodeDTO.getType().equals(EndNodeType.GATEWAY)) {
+            SerialConnectionDTO serialConnection = serialConnectionService.findOne(endNodeDTO.getSerialConnectionId());
+            XBeeDevice myDevice = new XBeeDevice(serialConnection.getPort(), serialConnection.getBaudRate());
+            try {
+                myDevice.open();
+            } catch (XBeeException e) {
+                e.printStackTrace();
+            }
+            myDevice.addDataListener(new MyDataReceiveListener());
+
+        }
         return ResponseEntity.created(new URI("/api/end-nodes/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);

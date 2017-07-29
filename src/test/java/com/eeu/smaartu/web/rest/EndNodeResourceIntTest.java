@@ -5,6 +5,7 @@ import com.eeu.smaartu.SmaartuApp;
 import com.eeu.smaartu.domain.EndNode;
 import com.eeu.smaartu.repository.EndNodeRepository;
 import com.eeu.smaartu.service.EndNodeService;
+import com.eeu.smaartu.service.SerialConnectionService;
 import com.eeu.smaartu.service.dto.EndNodeDTO;
 import com.eeu.smaartu.service.mapper.EndNodeMapper;
 import com.eeu.smaartu.web.rest.errors.ExceptionTranslator;
@@ -60,6 +61,8 @@ public class EndNodeResourceIntTest {
     private EndNodeService endNodeService;
 
     @Autowired
+    private SerialConnectionService serialConnectionService;
+    @Autowired
     private MappingJackson2HttpMessageConverter jacksonMessageConverter;
 
     @Autowired
@@ -78,7 +81,7 @@ public class EndNodeResourceIntTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        EndNodeResource endNodeResource = new EndNodeResource(endNodeService);
+        EndNodeResource endNodeResource = new EndNodeResource(endNodeService,serialConnectionService);
         this.restEndNodeMockMvc = MockMvcBuilders.standaloneSetup(endNodeResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)

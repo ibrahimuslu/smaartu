@@ -47,17 +47,17 @@ public class SerialConnectionResourceIntTest {
     private static final String DEFAULT_PORT = "AAAAAAAAAA";
     private static final String UPDATED_PORT = "BBBBBBBBBB";
 
-    private static final Long DEFAULT_BAUD_RATE = 1L;
-    private static final Long UPDATED_BAUD_RATE = 2L;
+    private static final int DEFAULT_BAUD_RATE = 1;
+    private static final int UPDATED_BAUD_RATE = 2;
 
-    private static final DataBits DEFAULT_DATA_BITS = DataBits.B7;
-    private static final DataBits UPDATED_DATA_BITS = DataBits.B8;
+    private static final int DEFAULT_DATA_BITS = DataBits.B7;
+    private static final int UPDATED_DATA_BITS = DataBits.B8;
 
     private static final Parity DEFAULT_PARITY = Parity.NONE;
     private static final Parity UPDATED_PARITY = Parity.EVEN;
 
-    private static final StopBits DEFAULT_STOP_BITS = StopBits.B1;
-    private static final StopBits UPDATED_STOP_BITS = StopBits.B2;
+    private static final int DEFAULT_STOP_BITS = StopBits.B1;
+    private static final int UPDATED_STOP_BITS = StopBits.B2;
 
     private static final FlowControl DEFAULT_FLOW_CONTROL = FlowControl.NONE;
     private static final FlowControl UPDATED_FLOW_CONTROL = FlowControl.HARDWARE;
@@ -175,10 +175,10 @@ public class SerialConnectionResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(serialConnection.getId().intValue())))
             .andExpect(jsonPath("$.[*].port").value(hasItem(DEFAULT_PORT.toString())))
-            .andExpect(jsonPath("$.[*].baudRate").value(hasItem(DEFAULT_BAUD_RATE.intValue())))
-            .andExpect(jsonPath("$.[*].dataBits").value(hasItem(DEFAULT_DATA_BITS.toString())))
+            .andExpect(jsonPath("$.[*].baudRate").value(hasItem(DEFAULT_BAUD_RATE)))
+            .andExpect(jsonPath("$.[*].dataBits").value(hasItem(DEFAULT_DATA_BITS)))
             .andExpect(jsonPath("$.[*].parity").value(hasItem(DEFAULT_PARITY.toString())))
-            .andExpect(jsonPath("$.[*].stopBits").value(hasItem(DEFAULT_STOP_BITS.toString())))
+            .andExpect(jsonPath("$.[*].stopBits").value(hasItem(DEFAULT_STOP_BITS)))
             .andExpect(jsonPath("$.[*].flowControl").value(hasItem(DEFAULT_FLOW_CONTROL.toString())));
     }
 
@@ -194,10 +194,10 @@ public class SerialConnectionResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(serialConnection.getId().intValue()))
             .andExpect(jsonPath("$.port").value(DEFAULT_PORT.toString()))
-            .andExpect(jsonPath("$.baudRate").value(DEFAULT_BAUD_RATE.intValue()))
-            .andExpect(jsonPath("$.dataBits").value(DEFAULT_DATA_BITS.toString()))
+            .andExpect(jsonPath("$.baudRate").value(DEFAULT_BAUD_RATE))
+            .andExpect(jsonPath("$.dataBits").value(DEFAULT_DATA_BITS))
             .andExpect(jsonPath("$.parity").value(DEFAULT_PARITY.toString()))
-            .andExpect(jsonPath("$.stopBits").value(DEFAULT_STOP_BITS.toString()))
+            .andExpect(jsonPath("$.stopBits").value(DEFAULT_STOP_BITS))
             .andExpect(jsonPath("$.flowControl").value(DEFAULT_FLOW_CONTROL.toString()));
     }
 

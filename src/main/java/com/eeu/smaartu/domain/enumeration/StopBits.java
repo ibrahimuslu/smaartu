@@ -3,6 +3,8 @@ package com.eeu.smaartu.domain.enumeration;
 /**
  * The StopBits enumeration.
  */
-public enum StopBits {
-    B1, B2
+public class StopBits {
+
+    public static final int B1=1;
+    public static final int B2=2;
 }

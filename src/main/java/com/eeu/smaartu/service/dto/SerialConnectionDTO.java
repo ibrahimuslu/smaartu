@@ -19,13 +19,13 @@ public class SerialConnectionDTO implements Serializable {
 
     private String port;
 
-    private Long baudRate;
+    private int baudRate;
 
-    private DataBits dataBits;
+    private int dataBits;
 
     private Parity parity;
 
-    private StopBits stopBits;
+    private int stopBits;
 
     private FlowControl flowControl;
 
@@ -45,19 +45,19 @@ public class SerialConnectionDTO implements Serializable {
         this.port = port;
     }
 
-    public Long getBaudRate() {
+    public int getBaudRate() {
         return baudRate;
     }
 
-    public void setBaudRate(Long baudRate) {
+    public void setBaudRate(int baudRate) {
         this.baudRate = baudRate;
     }
 
-    public DataBits getDataBits() {
+    public int getDataBits() {
         return dataBits;
     }
 
-    public void setDataBits(DataBits dataBits) {
+    public void setDataBits(int dataBits) {
         this.dataBits = dataBits;
     }
 
@@ -69,11 +69,11 @@ public class SerialConnectionDTO implements Serializable {
         this.parity = parity;
     }
 
-    public StopBits getStopBits() {
+    public int getStopBits() {
         return stopBits;
     }
 
-    public void setStopBits(StopBits stopBits) {
+    public void setStopBits(int stopBits) {
         this.stopBits = stopBits;
     }
 

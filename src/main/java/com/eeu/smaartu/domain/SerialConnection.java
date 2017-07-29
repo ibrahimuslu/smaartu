@@ -34,19 +34,17 @@ public class SerialConnection implements Serializable {
     private String port;
 
     @Column(name = "baud_rate")
-    private Long baudRate;
+    private int baudRate;
 
-    @Enumerated(EnumType.STRING)
     @Column(name = "data_bits")
-    private DataBits dataBits;
+    private int dataBits;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "parity")
     private Parity parity;
 
-    @Enumerated(EnumType.STRING)
     @Column(name = "stop_bits")
-    private StopBits stopBits;
+    private int stopBits;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "flow_control")
@@ -77,29 +75,29 @@ public class SerialConnection implements Serializable {
         this.port = port;
     }
 
-    public Long getBaudRate() {
+    public int getBaudRate() {
         return baudRate;
     }
 
-    public SerialConnection baudRate(Long baudRate) {
+    public SerialConnection baudRate(int baudRate) {
         this.baudRate = baudRate;
         return this;
     }
 
-    public void setBaudRate(Long baudRate) {
+    public void setBaudRate(int baudRate) {
         this.baudRate = baudRate;
     }
 
-    public DataBits getDataBits() {
+    public int getDataBits() {
         return dataBits;
     }
 
-    public SerialConnection dataBits(DataBits dataBits) {
+    public SerialConnection dataBits(int dataBits) {
         this.dataBits = dataBits;
         return this;
     }
 
-    public void setDataBits(DataBits dataBits) {
+    public void setDataBits(int dataBits) {
         this.dataBits = dataBits;
     }
 
@@ -116,16 +114,16 @@ public class SerialConnection implements Serializable {
         this.parity = parity;
     }
 
-    public StopBits getStopBits() {
+    public int getStopBits() {
         return stopBits;
     }
 
-    public SerialConnection stopBits(StopBits stopBits) {
+    public SerialConnection stopBits(int stopBits) {
         this.stopBits = stopBits;
         return this;
     }
 
-    public void setStopBits(StopBits stopBits) {
+    public void setStopBits(int stopBits) {
         this.stopBits = stopBits;
     }
 

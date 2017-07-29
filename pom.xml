@@ -93,15 +93,28 @@
 
 
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/org.rxtx/rxtx -->
+
+        <!-- https://mvnrepository.com/artifact/com.digi.xbee/xbee-java-library -->
         <dependency>
-            <groupId>org.rxtx</groupId>
-            <artifactId>rxtx</artifactId>
-            <version>2.1.7</version>
+            <groupId>com.digi.xbee</groupId>
+            <artifactId>xbee-java-library</artifactId>
+            <version>1.2.0</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-jdk14</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.digi</groupId>
+                    <artifactId>android-sdk-addon</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
-
-
-
+        <dependency>
+            <groupId>org.eclipse.paho</groupId>
+            <artifactId>org.eclipse.paho.client.mqttv3</artifactId>
+            <version>1.0.2</version>
+        </dependency>
         <dependency>
             <groupId>io.github.jhipster</groupId>
             <artifactId>jhipster</artifactId>
@@ -810,6 +823,7 @@
                 </dependency>
             </dependencies>
             <build>
+                <pluginManagement>
                 <plugins>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
@@ -874,6 +888,7 @@
                         </configuration>
                     </plugin>
                 </plugins>
+                </pluginManagement>
             </build>
             <properties>
                 <!-- log configuration -->

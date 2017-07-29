@@ -26,11 +26,11 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="baud_rate" type="bigint">
+            <column name="baud_rate" type="integer">
                 <constraints nullable="true" />
             </column>
 
-            <column name="data_bits" type="varchar(255)">
+            <column name="data_bits" type="integer">
                 <constraints nullable="true" />
             </column>
 
@@ -38,7 +38,7 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="stop_bits" type="varchar(255)">
+            <column name="stop_bits" type="integer">
                 <constraints nullable="true" />
             </column>
 
@@ -48,6 +48,6 @@
 
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
-        
+
     </changeSet>
 </databaseChangeLog>

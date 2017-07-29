@@ -23,15 +23,27 @@
         </div>
         <div class="form-group">
             <label class="control-label" for="field_baudRate">Baud Rate</label>
-            <input type="number" class="form-control" name="baudRate" id="field_baudRate"
-                    ng-model="vm.serialConnection.baudRate"
-                    />
+
+            <select class="form-control" name="baudRate" ng-model="vm.serialConnection.baudRate" id="field_baudRate">
+                <option value="300">300</option>
+                <option value="1200">1200</option>
+                <option value="2400">2400</option>
+                <option value="4800">4800</option>
+                <option value="9600">9600</option>
+                <option value="14400">14400</option>
+                <option value="19200">19200</option>
+                <option value="28800">28800</option>
+                <option value="38400">38400</option>
+                <option value="57600">57600</option>
+                <option value="115200">115200</option>
+                <option value="230400">230400</option>
+            </select>
         </div>
         <div class="form-group">
             <label class="control-label" for="field_dataBits">Data Bits</label>
             <select class="form-control" name="dataBits" ng-model="vm.serialConnection.dataBits" id="field_dataBits">
-                <option value="B7">B7</option>
-                <option value="B8">B8</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
             </select>
         </div>
         <div class="form-group">
@@ -47,8 +59,8 @@
         <div class="form-group">
             <label class="control-label" for="field_stopBits">Stop Bits</label>
             <select class="form-control" name="stopBits" ng-model="vm.serialConnection.stopBits" id="field_stopBits">
-                <option value="B1">B1</option>
-                <option value="B2">B2</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
             </select>
         </div>
         <div class="form-group">
